@@ -1,0 +1,14 @@
+class Solution:
+    def nextGreaterElement(self, nums1, nums2):
+        nge={}
+        st=[]
+        for num in nums2:
+            while st and num>st[-1]:
+                nge[st.pop()]=num
+            st.append(num)
+        while st:
+            nge[st.pop()]=-1
+        res=[]
+        for i in nums1:
+            res.append(nge[i])
+        return res
